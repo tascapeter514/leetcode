@@ -8,7 +8,35 @@ class ListNode(object):
 
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
-        pass
+        if not list1 and not list2: return list1
+        if not list1 or not list2: return list1 or list2
+        dummy = ListNode(0)
+        curr = dummy
+        while list1 and list2:
+            if list1.val <= list2.val:
+                curr.next = list1
+                list1 = list1.next
+            else:
+                curr.next = list2
+                list2 = list2.next
+            curr = curr.next
+        print('curr:', curr)
+        print('dummy:', dummy)
+            
+            
+        
+
+
+
+
+                
+
+                
+        
+
+            
+
+
 
 def build_list(list = []):
     if not list: return None
@@ -22,17 +50,15 @@ def build_list(list = []):
 
 
 def build_list_recurse(list = []):
-    print('list:', list)
     if not list: return None
     curr = ListNode(list[0])
-    print('current node:', curr)
     curr.next = build_list_recurse(list[1:])
-    print('final curr:', curr)
     return curr
 
 
-result = build_list([1, 2])
+list1 = build_list([1, 2, 4])
 
-new_result = build_list_recurse([1, 2])
+list2 = build_list_recurse([1, 3, 4])
 
-print('result:', new_result)
+solution = Solution()
+print('solution:', solution.mergeTwoLists(list1, list2))
