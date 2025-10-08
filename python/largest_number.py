@@ -41,9 +41,9 @@ testTwo = {
 class Solution(object):
     def largestNumber(self, nums):
         start = 0
-        end = len(nums)  - 1
-        forward = str(nums[start]) + str(nums[end])
-        reverse = str(nums[end]) + str(nums[start])
+        right = len(nums)  - 1
+        forward = str(nums[start]) + str(nums[right])
+        reverse = str(nums[right]) + str(nums[start])
         if (int(forward) > int(reverse)):
             print(int(forward))
         else:
