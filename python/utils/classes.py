@@ -2,8 +2,8 @@
 
 # LINKED LIST
 class Node(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
+    def __init__(self, a_number, next=None):
+        self.data = a_number
         self.next = next
 
 class LinkedList():
