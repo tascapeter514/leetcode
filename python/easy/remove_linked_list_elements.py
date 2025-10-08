@@ -23,13 +23,18 @@
 # Output: []
 
 # Definition for singly-linked list.
+def to_list(node):
+    result = []
+    while node:
+        result.append(node.data)
+        node = node.next
+    return result
+
 
 class Solution(object):
     def removeElements(self, head, val):
-        pass
+        if not head: return None
        
-
-
 from utils.classes import LinkedList, Node
 from utils.tests import Test
 
@@ -51,15 +56,15 @@ output3_values = []
 
 for el in list1_values:
     node = Node(el)
-    list1.append(el)
+    list1.append(node)
 
 for el in list2_values:
     node = Node(el)
-    list2.append(el)
+    list2.append(node)
 
 for el in list3_values:
     node = Node(el)
-    list3.append(el)
+    list3.append(node)
 
 for el in output1_values:
     node = Node(el)
@@ -73,16 +78,23 @@ for el in output3_values:
     node = Node(el)
     output3.append(node)
 
-test1 = Test({'head': list1, 'val': 6}, output1)
-test2 = Test({'head': list2, 'val': 1}, output2)
-test3 = Test({'head': list3, 'val': 7}, output3)
+
+
+test1 = Test({'head': list1, 'val': 6}, output1.head)
+test2 = Test({'head': list2, 'val': 1}, output2.head)
+test3 = Test({'head': list3, 'val': 7}, output3.head)
 
 tests = [test1, test2, test3]
+# print('test 1 output:', test3.output.show_elements())
 
 solution = Solution()
 
 for test in tests:
-    print(solution.removeElements(**test.input) == test.output)
+    actual = solution.removeElements(**test.input)
+    expected = test.output
+    print(to_list(actual), "==", to_list(expected))
+    print(to_list(actual) == to_list(expected))
+
 
 
 
